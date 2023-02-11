@@ -1,0 +1,9 @@
+[
+    {
+        "name" : "Car01",
+        "speed": 300,
+        "acceleration": 5,
+        "handling" : 10,
+        "nitro" : 10
+    }
+]

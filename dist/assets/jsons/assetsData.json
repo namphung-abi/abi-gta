@@ -1,0 +1,7 @@
+[
+    {
+        "name" : "Car01",
+        "path" : "models/model_01.glb",
+        "type" : "model"
+    }
+]
