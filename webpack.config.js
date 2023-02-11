@@ -22,4 +22,9 @@ module.exports = {
             patterns: [{ from: "assets", to: "assets", noErrorOnMissing: true }],
         }),
     ],
+    resolve: {
+        fallback: {
+            util: require.resolve("util/")
+        }
+    }
 };

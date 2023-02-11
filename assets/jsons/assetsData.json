@@ -3,5 +3,15 @@
         "name" : "Car01",
         "path" : "models/model_01.glb",
         "type" : "model"
+    },
+    {
+        "name" : "Car02",
+        "path" : "models/model_02.glb",
+        "type" : "model"
+    },
+    {
+        "name": "font",
+        "type": "font",
+        "path": "fonts/RumRaisin-Regular.json"
     }
 ]

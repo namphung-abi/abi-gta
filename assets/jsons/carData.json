@@ -1,9 +1,26 @@
 [
     {
         "name" : "Car01",
+        "color" : [
+            "red",
+            "blue",
+            "green"
+        ],
         "speed": 300,
         "acceleration": 5,
         "handling" : 10,
         "nitro" : 10
+    },
+    {
+        "name" : "Car02",
+        "color" : [
+            "red",
+            "blue",
+            "green"
+        ],
+        "speed": 500,
+        "acceleration": 8,
+        "handling" : 7,
+        "nitro" : 5
     }
 ]

@@ -1,4 +1,6 @@
 import * as pc from "playcanvas";
+import AssetManager, { AssetManagerEvent } from "./assetManager";
+import SelectCarScene from "./scenes/selectCarScene";
 
 export default class App extends pc.Application {
     constructor(canvas) {
@@ -6,7 +8,7 @@ export default class App extends pc.Application {
         this._init();
         this._initCamera();
         this._initLight();
-        this._initBox();
+        this._initAssetManager();
         this.on("update", this.update.bind(this));
         this.start();
     }
@@ -19,7 +21,7 @@ export default class App extends pc.Application {
     }
 
     update(dt) {
-        this.box.rotate(10 * dt, 20 * dt, 30 * dt)
+        // this.selectCarScene.update();
     }
 
     _initCamera() {
@@ -27,9 +29,8 @@ export default class App extends pc.Application {
         this.camera.addComponent("camera", {
             clearColor: new pc.Color(0.5, 0.6, 0.9),
         });
-    
         this.root.addChild(this.camera);
-        this.camera.setPosition(0, 0, 3);
+        this.camera.setPosition(0.6, 0.4, 2);
     }
 
     _initLight() {
@@ -39,11 +40,13 @@ export default class App extends pc.Application {
         this.light.setEulerAngles(45, 0, 0);
     }
 
-    _initBox() {
-        this.box = new pc.Entity("cube");
-        this.box.addComponent("render", {
-            type: "box",
-        });
-        this.root.addChild(this.box);
+    _initAssetManager() {
+        this.assetManager = new AssetManager(this, this.loadSelectCarScene.bind(this));
+        this.assetManager.load();
+    }
+
+    loadSelectCarScene() {
+        this.selectCarScene = new SelectCarScene(this);
+        this.root.addChild(this.selectCarScene);
     }
 }

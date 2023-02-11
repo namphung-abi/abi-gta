@@ -1,63 +1,48 @@
 import * as pc from "playcanvas";
-import { debug } from "webpack";
-import AssetManager from "../assetManager";
+import TitleAndValue from "../object/UI/titleAndValue";
 
 export default class IntroScreen extends pc.Entity {
-    constructor(app, assetManager) {
+    constructor(app) {
         super("intro screen");
         this.app = app;
-        this.assetManager = assetManager;
         this.addComponent("screen", {
             resolution: [1280, 720],
             referenceResolution: [1080, 1920],
             screenSpace: true,
         });
-        // this._init();
+        this._init();
     }
 
     _init() {
-        // const button = new pc.Entity("button");
-        // button.addComponent("button", {
-        //     imageEntity: button,
-        // });
-        // this.txtHealth = new pc.Entity("Text Health");
-        // this.txtHealth.addComponent("element", {
-        //     type: pc.ELEMENTTYPE_TEXT,
-        //     anchor: pc.Vec4.ZERO,
-        //     pivot: pc.Vec2.ZERO,
-        //     text: "100",
-        //     fontSize: 80,
-        //     fontAsset: this.assetManager.getAssetByName("font"),
-        // })
-        // console.log(this.assetManager.getAssetByName("font"));
-        // this.addChild(this.txtHealth)
+        this.panel = new pc.Entity();
+        // this.panel.setPosition()
+        this.addChild(this.panel);
+        
+        this.speed = new TitleAndValue(this.app);
+        this.speed.changeTitle("Speed :");
+        this.speed.changeValue("600");
+        this.panel.addChild(this.speed);
 
-        // button.addComponent("element", {
-        //     anchor: [0.5, 0.5, 0.5, 0.5],
-        //     height: 40,
-        //     pivot: [0.5, 0.5],
-        //     type: pc.ELEMENTTYPE_IMAGE,
-        //     width: 175,
-        //     useInput: true,
-        // });
+        this.acceleration = new TitleAndValue(this.app);
+        this.acceleration.changeTitle("Acceleration :");
+        this.acceleration.changeValue("5");
+        this.acceleration.updatePosition(new pc.Vec3(0, -0.16, 0));
+        this.panel.addChild(this.acceleration);
 
-        // this.addChild(button);
+        this.handling = new TitleAndValue(this.app);
+        this.handling.changeTitle("Handling :");
+        this.handling.changeValue("7");
+        this.handling.updatePosition(new pc.Vec3(0, -0.32, 0));
+        this.panel.addChild(this.handling);
 
-        // Create a label for the button
-        // const label = new pc.Entity("label");
-        // label.addComponent("element", {
-        //     anchor: [0.5, 0.5, 0.5, 0.5],
-        //     color: new pc.Color(0, 0, 0),
-        //     fontAsset: this.assetManager.getAssetByName("font"),
-        //     fontSize: 32,
-        //     height: 64,
-        //     pivot: [0.5, 0.5],
-        //     text: "CLICK ME",
-        //     type: pc.ELEMENTTYPE_TEXT,
-        //     width: 128,
-        //     wrapLines: true,
-        // });
+        this.nitro = new TitleAndValue(this.app);
+        this.nitro.changeTitle("Nitro :");
+        this.nitro.changeValue("17");
+        this.nitro.updatePosition(new pc.Vec3(0, -0.48, 0));
+        this.panel.addChild(this.nitro);
+    }
 
-        // this.addChild(label);
+    updateCarInfo(car) {
+
     }
 }
