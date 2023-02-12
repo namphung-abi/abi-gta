@@ -4,7 +4,12 @@ import SelectCarScene from "./scenes/selectCarScene";
 
 export default class App extends pc.Application {
     constructor(canvas) {
-        super(canvas)
+        const config = {
+            keyboard: new pc.Keyboard(window),
+            mouse:  new pc.Mouse(canvas),
+            elementInput: new pc.ElementInput(canvas),
+        };
+        super(canvas, config)
         this._init();
         this._initCamera();
         this._initLight();
@@ -21,7 +26,9 @@ export default class App extends pc.Application {
     }
 
     update(dt) {
-        // this.selectCarScene.update();
+        if (this.selectCarScene) {
+            this.selectCarScene.update(dt); // cheat can not using update for entity
+        }
     }
 
     _initCamera() {
@@ -30,7 +37,7 @@ export default class App extends pc.Application {
             clearColor: new pc.Color(0.5, 0.6, 0.9),
         });
         this.root.addChild(this.camera);
-        this.camera.setPosition(0.6, 0.4, 2);
+        this.camera.setPosition(0.65, 0.3, 2);
     }
 
     _initLight() {

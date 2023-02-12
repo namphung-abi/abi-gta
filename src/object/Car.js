@@ -1,9 +1,10 @@
 import * as pc from "playcanvas";
 
 export default class Car extends pc.Entity {
-    constructor(app, name, color, speed, acceleration, handling, nitro) {
+    constructor(app, id, name, color, speed, acceleration, handling, nitro) {
         super();
         this.app = app;
+        this.id = id;
         this.name = name;
         this.color = color;
         this.speed = speed;
@@ -11,14 +12,10 @@ export default class Car extends pc.Entity {
         this.handling = handling;
         this.nitro = nitro;
         this._init();
-        this.app.on("update", () => {
-            console.log("alo");
-        }, this);
-
     }
 
     _init(){
-        this.model = this.app.assets._assets.find((element) => element.name === this.name);
+        this.model = this.app.assets._assets.find((element) => element.name === this.id);
         if (this.model === undefined) {
             alert(`Can't find asset has key ${this.name}`);
             return;
@@ -31,10 +28,18 @@ export default class Car extends pc.Entity {
     }
 
     _initMaterial() {
+        var texture = this.app.assets._assets.find((element) => element.name === "tex_car_01_C");
         this.material = new pc.StandardMaterial();
         this.material.diffuse = new pc.Color(1, 0.6, 0);
+        this.material.diffuseMap = texture.resource;
         this.material.update();
         this.model.meshInstances[0].material = this.material;
+    }
+
+    changeTexture(tex) {
+        var texture = this.app.assets._assets.find((element) => element.name === tex);
+        this.material.diffuseMap = texture.resource;
+        this.material.update();
     }
 
     onDisable() {
@@ -46,6 +51,6 @@ export default class Car extends pc.Entity {
     }
 
     update(dt) {
-        console.log("alo");
+        this.rotate(0 * dt, 30 * dt, 0 * dt);
     }
 }

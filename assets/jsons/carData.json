@@ -1,6 +1,7 @@
 [
     {
-        "name" : "Car01",
+        "id" : "Car01",
+        "name" : "Lamborghini",
         "color" : [
             "red",
             "blue",
@@ -12,7 +13,8 @@
         "nitro" : 10
     },
     {
-        "name" : "Car02",
+        "id" : "Car02",
+        "name" : "Bugatti",
         "color" : [
             "red",
             "blue",

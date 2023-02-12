@@ -13,5 +13,20 @@
         "name": "font",
         "type": "font",
         "path": "fonts/RumRaisin-Regular.json"
+    },
+    {
+        "name": "tex_car_01_A",
+        "type": "texture",
+        "path": "textures/tex_car_01_A.png"
+    },
+    {
+        "name": "tex_car_01_B",
+        "type": "texture",
+        "path": "textures/tex_car_01_B.png"
+    },
+    {
+        "name": "tex_car_01_C",
+        "type": "texture",
+        "path": "textures/tex_car_01_C.png"
     }
 ]
