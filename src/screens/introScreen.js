@@ -16,6 +16,7 @@ export default class IntroScreen extends pc.Entity {
         this.font = this.app.assets._assets.find((element) => element.name === "font");
         this._init();
         this._initButtonTextureList();
+        this._initSelectButton();
     }
 
     _init() {
@@ -132,5 +133,41 @@ export default class IntroScreen extends pc.Entity {
         this.acceleration.changeValue(car.acceleration);
         this.handling.changeValue(car.handling);
         this.nitro.changeValue(car.nitro);
+    }
+
+    _initSelectButton() {
+        this.selectButton = new pc.Entity();
+        this.selectButton.addComponent("button", {
+            imageEntity: this.selectButton,
+        });
+
+        this.selectButton.addComponent("element", {
+            anchor: [0.82, 0.05, 0.95, 0.12],
+            height: 40,
+            pivot: [0.5, 0.5],
+            type: pc.ELEMENTTYPE_IMAGE,
+            width: 175,
+            color: new pc.Color(0, 0.4, 1, 1),
+            useInput: true,
+        });
+
+        this.addChild(this.selectButton);
+
+        this.selectButtonTitle = new pc.Entity();
+        this.selectButtonTitle.addComponent("element", {
+            anchor: [0.5, 0.5, 0.5, 0.5],
+            color: new pc.Color(1, 1, 1),
+            fontAsset: this.font,
+            fontSize: 36,
+            height: 64,
+            pivot: [0.5, 0.5],
+            text: "CLICK ME",
+            type: pc.ELEMENTTYPE_TEXT,
+            width: 128,
+            wrapLines: true,
+        });
+
+        this.selectButton.addChild(this.selectButtonTitle);
+
     }
 }
