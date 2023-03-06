@@ -34,7 +34,7 @@ export default class App extends pc.Application {
     _initCamera() {
         this.camera = new pc.Entity("camera");
         this.camera.addComponent("camera", {
-            clearColor: new pc.Color(0.5, 0.6, 0.9),
+            clearColor: new pc.Color(1, 1, 1),
         });
         this.root.addChild(this.camera);
         this.camera.setPosition(0.65, 0.3, 2);
@@ -48,8 +48,12 @@ export default class App extends pc.Application {
     }
 
     _initAssetManager() {
-        this.assetManager = new AssetManager(this, this.loadSelectCarScene.bind(this));
+        this.assetManager = new AssetManager(this, this.onStart.bind(this));
         this.assetManager.load();
+    }
+
+    onStart() {
+        this.loadSelectCarScene();
     }
 
     loadSelectCarScene() {

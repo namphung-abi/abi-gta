@@ -54,7 +54,8 @@ export default class IntroScreen extends pc.Entity {
             pivot: new pc.Vec2(0, 0.5),
             text: "Car01",
             fontSize: 80,
-            fontAsset: this.font
+            fontAsset: this.font,
+            color: new pc.Color(0, 0, 0, 1)
         });
         this.carName.setLocalPosition(0, 200, 0);
         this.carName.element.text = "Car01".toUpperCase();
@@ -69,7 +70,8 @@ export default class IntroScreen extends pc.Entity {
             pivot: new pc.Vec2(0, 0.5),
             text: "Color :",
             fontSize: 50,
-            fontAsset: this.font
+            fontAsset: this.font,
+            color: new pc.Color(0, 0, 0, 1)
         });
         this.panel.addChild(this.colorTittle);
         this.colorTittle.setLocalPosition(0, -190, 0);

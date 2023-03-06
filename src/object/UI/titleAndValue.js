@@ -25,7 +25,8 @@ export default class TitleAndValue extends pc.Entity{
             pivot: new pc.Vec2(0, 0.5),
             text: "Speed : ",
             fontSize: 50,
-            fontAsset: this.font
+            fontAsset: this.font,
+            color: new pc.Color(0, 0, 0, 1)
         });
         this.addChild(this.title);
     
@@ -36,7 +37,8 @@ export default class TitleAndValue extends pc.Entity{
             pivot: new pc.Vec2(0, 0.5),
             text: "500",
             fontSize: 50,
-            fontAsset: this.font
+            fontAsset: this.font,
+            color: new pc.Color(0, 0, 0, 1)
         });
         this.addChild(this.value);
         var currentPosition = this.value.getLocalPosition();
